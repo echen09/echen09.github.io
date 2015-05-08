@@ -1,15 +1,36 @@
-<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+jQuery(document).ready(function($){
+	var $timeline_block = $('.cd-timeline-block');
 
-  	ga('create', 'UA-48014931-1', 'codyhouse.co');
-  	ga('send', 'pageview');
+	//hide timeline blocks which are outside the viewport
+	$timeline_block.each(function(){
+		if($(this).offset().top > $(window).scrollTop()+$(window).height()*0.75) {
+			$(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
+		}
+	});
 
-  	jQuery(document).ready(function($){
-  		$('.close-carbon-adv').on('click', function(){
-  			$('#carbonads-container').hide();
-  		});
-  	});
-</script>
+	//on scolling, show/animate timeline blocks when enter the viewport
+	$(window).on('scroll', function(){
+		$timeline_block.each(function(){
+      var windowDiff = $(window).height() - ($(window).height() * 0.75);
+      var fadeOffset = $(this).offset().top + $(this).height();
+      var scrollPos = $(window).scrollTop();
+      
+			if( $(this).offset().top <= $(window).scrollTop()+$(window).height()*0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden') ) {
+				$(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+			}
+      else if (fadeOffset < (scrollPos + windowDiff)) {
+        console.log("Fade Offset: " + fadeOffset);
+        console.log("Fade Position: " + (scrollPos + windowDiff))
+        $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('bounce-in').addClass('is-hidden');
+      }
+      /*else {
+        console.log("=====================")
+        console.log("BlockOne: " + $(this));
+        console.log("Top Offset: " + $(this).offset().top);
+        console.log("Scroll Top: " + $(window).scrollTop());
+        console.log("Window Fade Height: " + $(window).height()*0.75);
+        console.log("Element Height: " + $(this).height());
+      }*/
+		});
+	});
+});
