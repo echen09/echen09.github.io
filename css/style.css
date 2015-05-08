@@ -200,7 +200,7 @@ header {
 header h1 {
   color: white;
   font-size: 18px;
-  font-size: 3.5rem;
+  font-size: 1.125rem;
 }
 @media only screen and (min-width: 1170px) {
   header {
@@ -209,7 +209,7 @@ header h1 {
   }
   header h1 {
     font-size: 24px;
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
 
