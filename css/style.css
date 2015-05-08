@@ -195,7 +195,7 @@ header {
   height: 450px;
   line-height: 450px;
   text-align: center;
-  background: #303e49 url("img/entrance_view.png") no-repeat center;
+  background: #303e49 url("/img/entrance_view.png") no-repeat center;
 }
 header h1 {
   color: white;
