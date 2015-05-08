@@ -192,10 +192,10 @@ Main components
 
 -------------------------------- */
 header {
-  height: 200px;
-  line-height: 200px;
+  height: 450px;
+  line-height: 450px;
   text-align: center;
-  background: #303e49;
+  background: #303e49 url("entrance_view.png") no-repeat center;
 }
 header h1 {
   color: white;
